@@ -1,0 +1,52 @@
+.features {
+    width: 80%;
+    margin: auto;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 0;
+    gap: 40px;
+}
+
+/* SZÖVEG */
+.feature .text {
+    flex: 1;
+}
+
+.feature .text h2 {
+    margin-bottom: 10px;
+}
+
+.feature .text p {
+    line-height: 1.6;
+}
+
+/* KÉP */
+.feature .image {
+    flex: 1;
+}
+
+.feature .image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* 🔥 EZ CSINÁLJA A VÁLTÁST */
+.feature.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 📱 RESZPONZÍV */
+@media (max-width: 768px) {
+    .feature {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature.reverse {
+        flex-direction: column;
+    }
+}
