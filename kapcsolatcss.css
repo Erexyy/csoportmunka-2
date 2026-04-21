@@ -1,0 +1,80 @@
+.contact-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.contact-box button {
+    padding: 10px;
+    width: 100%;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.title {
+    text-align: center;
+}
+
+.title h2,
+.title p {
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 500px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.contact-box input,
+.contact-box textarea {
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.title h2 {
+    font-size: 32px;
+}
+
+.title {
+    padding: 50px 20px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    background: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #666;
+    }
+
+nav a:hover {
+    color: black;
+}
+
+

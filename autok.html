@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarGo – Autók</title>
+<link rel="stylesheet" href="autokcss.css">
+
+</head>
+
+<body>
+
+    <div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2>Foglalás</h2>
+
+        <p id="selectedCar"></p>
+
+        <input type="text" id="name" placeholder="Név">
+        <input type="email" id="email" placeholder="Email">
+        <input type="tel" id="phone" placeholder="Telefonszám">
+
+        <button onclick="submitBooking()">Foglalás elküldése</button>
+    </div>
+</div>
+
+<header>
+    <h1>CarGo</h1>
+    <nav>
+        <a href="autokolcsonzo.html">Kezdőlap</a>
+        <a href="autok.html">Autók</a>
+        <a href="kapcsolat.html">Kapcsolat</a>
+    </nav>
+</header>
+
+<section class="title">
+    <div class="sort-dropdown">
+    <select onchange="sortCars(this.value)">
+        <option value="default">Alap sorrend</option>
+        <option value="asc">Olcsók elöl</option>
+        <option value="desc">Drágák elöl</option>
+    </select>
+</div>
+    <h2>Elérhető autók</h2>
+    <p>Válaszd ki a számodra megfelelőt</p>
+</section>
+
+<div class="container">
+    <div class="car-list">
+
+        <button class="scroll-btn" onclick="scrollDown()">↓</button>
+
+        <div class="car">
+            <img src="eqb.avif" class="car-img">
+            <div class="car-info">
+                <div class="car-name">Mercedes EQB</div>
+                <div class="car-details">100% Elektromotor • 1 fokozatú automata váltó • 500 km hatótáv</div>
+            </div>
+            <div class="actions">
+                <div class="price">130 000 Ft / nap</div>
+                <button onclick="book('Mercedes EQB')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="bmw3.avif" class="car-img">
+            <div class="car-info">
+                <div class="car-name">BMW 3 G20 facelift</div>
+                <div class="car-details">8 sebességes automata váltó • Benzin • Xdrive</div>
+            </div>
+            <div class="actions">
+                <div class="price">115 000 Ft / nap</div>
+                <button onclick="book('BMW 3 G20 ')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="xm4.jpg" class="car-img">
+            <div class="car-info">
+                <div class="car-name">BMW X4 F98 2021</div>
+                <div class="car-details">6 sebességes automata váltó • 510 le • Xdrive</div>
+            </div>
+            <div class="actions">
+                <div class="price">75 000 Ft / nap</div>
+                <button onclick="book('BMW X4')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="a6.jpg" class="car-img">
+            <div class="car-info">
+                <div class="car-name">Audi A6 C9 2026</div>
+                <div class="car-details">S Tronic automata váltó • Hibrid • Adaptív légrugós</div>
+            </div>
+            <div class="actions">
+                <div class="price">195 000 Ft / nap</div>
+                <button onclick="book('Audi A6 C9')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="roadster.jpg" class="car-img">
+            <div class="car-info">
+                <div class="car-name">Tesla Roadster</div>
+                <div class="car-details">AWD • 400+ km/h • 620 km hatótáv</div>
+            </div>
+            <div class="actions">
+                <div class="price">225 000 Ft / nap</div>
+                <button onclick="book('Tesla Roadster')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="mx5.jpg" class="car-img">
+            <div class="car-info">
+                <div class="car-name">Mazda MX-5</div>
+                <div class="car-details">6 sebességes manuál • Könnyű roadster</div>
+            </div>
+            <div class="actions">
+                <div class="price">24 000 Ft / nap</div>
+                <button onclick="book('Mazda MX-5')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+    <img src="rsoctavia.jpg" class="car-img">
+    <div class="car-info">
+        <div class="car-name">Skoda Octavia RS 2021</div>
+        <div class="car-details">7 sebességes automata DSG váltó • 2.0 TSI turbocharged motor • FWD </div>
+    </div>
+    <div class="actions">
+        <div class="price">115 000 Ft / nap</div>
+        <button onclick="book('Skoda Octavia RS')">Foglalás</button>
+    </div>
+</div>
+
+<div class="car">
+    <img src="kodiak.jpg" class="car-img">
+    <div class="car-info">
+        <div class="car-name">Skoda Kodiaq 2017</div>
+        <div class="car-details">6 sebességes automata DSG váltó • AWD • 7 személyes</div>
+    </div>
+    <div class="actions">
+        <div class="price">67 000 Ft / nap</div>
+        <button onclick="book('Skoda Kodiaq')">Foglalás</button>
+    </div>
+</div>
+
+
+
+
+    </div>
+
+</div>
+
+<footer>
+    <p>info@cargo.hu</p>
+</footer>
+
+<script>
+let selectedCarName = "";
+
+function book(car) {
+    selectedCarName = car;
+    document.getElementById("selectedCar").innerText = "Autó: " + car;
+    document.getElementById("bookingModal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("bookingModal").style.display = "none";
+}
+
+function submitBooking() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+
+    if (!name || !email || !phone) {
+        alert("Minden mezőt ki kell tölteni!");
+        return;
+    }
+
+    alert(
+        "Foglalás sikeres ✔\n\n" +
+        "Autó: " + selectedCarName + "\n" +
+        "Név: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Telefon: " + phone
+    );
+
+    closeModal();
+}
+function scrollDown() {
+    const list = document.querySelector(".car-list");
+    list.scrollBy({
+        top: 300,
+        behavior: "smooth"
+    });
+}
+
+function getPrice(car) {
+    const text = car.querySelector(".price").innerText;
+    return parseInt(text.replace(/\D/g, ""));
+}
+
+function sortCars(type) {
+    const container = document.querySelector(".car-list");
+    const cars = Array.from(document.querySelectorAll(".car"));
+
+    if (type === "default") {
+        location.reload();
+        return;
+    }
+
+    cars.sort((a, b) => {
+        const priceA = getPrice(a);
+        const priceB = getPrice(b);
+
+        return type === "asc" ? priceA - priceB : priceB - priceA;
+    });
+
+    cars.forEach(car => container.appendChild(car));
+}
+
+</script>
+
+</body>
+</html>

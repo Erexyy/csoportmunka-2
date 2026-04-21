@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarGo</title>
+
+<style>
+:root {
+    --primary: #111;
+    --accent: #0071e3;
+    --bg: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--primary);
+}
+
+/* HEADER */
+header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+header h1 {
+    font-size: 20px;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 120px 20px 80px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #666;
+    font-size: 18px;
+}
+
+/* CARS */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.cars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.car {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.car:hover {
+    transform: translateY(-5px);
+}
+
+.car img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.car-content {
+    padding: 15px;
+}
+
+.car h3 {
+    margin-bottom: 5px;
+}
+
+.price {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>CarGo</h1>
+    <nav>
+        <a href="autokolcsonzo.html">Kezdőlap</a>
+        <a href="autok.html">Autók</a>
+        <a href="kapcsolat.html">Kapcsolat</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Bérelj autót egyszerűen</h2>
+    <p>Nincs bonyolítás. Csak válassz és indulj.</p>
+</section>
+
+<div class="container" id="cars">
+    <div class="cars">
+
+        <div class="car">
+            <img src="eqb.avif">
+            <div class="car-content">
+                <h3>Mercedes EQB</h3>
+                <p class="price">130 000 Ft / nap</p>
+                <button onclick="book('Mercedes EQB')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="bmw3.avif">
+            <div class="car-content">
+                <h3>BMW 3 G20 facelift</h3>
+                <p class="price">115 000 Ft / nap</p>
+                <button onclick="book('BMW G20')">Foglalás</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img src="xm4.jpg">
+            <div class="car-content">
+                <h3>BMW X4 F98 2021</h3>
+                <p class="price">75 000 Ft / nap</p>
+                <button onclick="book('Bmw X4')">Foglalás</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer id="contact">
+    <p>info@cargo.hu</p>
+</footer>
+
+<script>
+function book(car) {
+    const confirmBooking = confirm(car + " lefoglalása?");
+    if(confirmBooking){
+        alert("Foglalás sikeres ✔");
+    }
+}
+</script>
+
+</body>
+</html>
